@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <title>Convoy Offers</title>
+    </head>
+
+    <body>
+        <div id="appContainer">
+            <div id="appHeader">
+                <img id="headerLogo" src="images/convoy_logo.png" alt="Convoy company logo">
+                <ul id="headerNav">
+                    <li class="navItem active">Offers</li>
+                    <li class="navItem">My Jobs</li>
+                </ul>
+            </div>
+            <div id="appContent">
+                <div id="sortSelector">
+                    <label>Sort by:</label>
+                    <select id="sort" name="sortOptions">
+                        <option value="pickup">Pick-up Date</option>
+                        <option value="dropoff">Drop-off Date</option>
+                        <option value="price">Price</option>
+                        <option value="origin">Origin</option>
+                        <option value="destination">Destination</option>
+                        <option value="distance">Distance (miles)</option>
+                    </select>
+                </div>
+                <div id="offerList"></div>
+                <div class="button">Show More</div>
+            </div>
+            <footer>
+                Eric's Homework
+            </footer>
+        </div>
+        <script src="offers.js"></script>
+    </body>
+</html> 

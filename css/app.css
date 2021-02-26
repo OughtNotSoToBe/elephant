@@ -1,0 +1,386 @@
+body {
+  background-color: #191919;
+  margin: 0;
+}
+
+body #appContainer {
+  font-family: Avenir, sans-serif;
+  width: 860px;
+  min-width: 360px;
+  max-width: 100%;
+  margin: auto;
+  background-color: #F7F7F7;
+}
+
+body #appContainer #appHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 56px;
+  padding: 0 40px;
+  background-color: #FFFFFF;
+}
+
+body #appContainer #appHeader #headerLogo {
+  width: 111px;
+  height: 16px;
+}
+
+body #appContainer #appHeader #headerNav {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 0 30px;
+  padding: 0;
+}
+
+body #appContainer #appHeader #headerNav .navItem {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #0B2127;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  padding: 0 25px;
+  height: 56px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 429px) {
+  body #appContainer #appHeader #headerNav .navItem {
+    font-size: 16px;
+  }
+}
+
+body #appContainer #appHeader #headerNav .navItem:hover {
+  cursor: pointer;
+}
+
+body #appContainer #appHeader #headerNav .navItem:hover:not(.active) {
+  border-bottom: 4px solid rgba(246, 83, 53, 0.4);
+}
+
+body #appContainer #appHeader #headerNav .navItem.active {
+  border-bottom: 4px solid #F65335;
+}
+
+@media (max-width: 429px) {
+  body #appContainer #appHeader #headerNav .navItem {
+    padding: 0 17px;
+  }
+}
+
+@media (max-width: 429px) {
+  body #appContainer #appHeader {
+    padding: 0 20px;
+  }
+}
+
+body #appContainer #appContent {
+  padding: 30px 48px 24px;
+}
+
+body #appContainer #appContent #sortSelector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  background-color: #F7F9FA;
+  border: 1px solid #D6DADC;
+  border-radius: 4px;
+  height: 52px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body #appContainer #appContent #sortSelector label {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  color: #5A666C;
+  margin-right: 10px;
+}
+
+body #appContainer #appContent #sortSelector select {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  color: #1079A5;
+  background-color: #EFF5F9;
+  border: 1px solid #E8EEF1;
+  border-radius: 2px;
+  height: 24px;
+}
+
+body #appContainer #appContent #sortSelector select:hover {
+  cursor: pointer;
+}
+
+body #appContainer #appContent #offerList {
+  margin-bottom: 20px;
+  border: 1px solid #D6DADC;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+body #appContainer #appContent #offerList .offer {
+  padding: 17px 21px;
+  border-bottom: 1px solid #D6DADC;
+}
+
+body #appContainer #appContent #offerList .offer-label {
+  margin-bottom: 14px;
+}
+
+body #appContainer #appContent #offerList .offer-label-requested {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.35px;
+  line-height: 20px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #14A9E6;
+  padding: 1px 10px 0;
+  line-height: 20px;
+  height: 24px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body #appContainer #appContent #offerList .offer:last-child {
+  border-bottom: none;
+}
+
+body #appContainer #appContent #offerList .offer-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 14px;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px 10px 0 0;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots-connector {
+  width: 1px;
+  height: 50px;
+  border-right: 1px solid #B5BBBE;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 4px;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #B5BBBE;
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure {
+  margin: 0 0 20px 0;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure-origin {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.45px;
+  color: #0A2127;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure-date {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #7F8D99;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arrival-destination {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.45px;
+  color: #0A2127;
+}
+
+body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arrival-date {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #7F8D99;
+}
+
+body #appContainer #appContent #offerList .offer-details-containerType, body #appContainer #appContent #offerList .offer-details-mileage {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.45px;
+  color: #0B2127;
+}
+
+body #appContainer #appContent #offerList .offer-details-price {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.45px;
+  color: #49A54E;
+}
+
+@media (max-width: 699px) {
+  body #appContainer #appContent #offerList .offer-details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  body #appContainer #appContent #offerList .offer-details-containerType, body #appContainer #appContent #offerList .offer-details-mileage, body #appContainer #appContent #offerList .offer-details-price {
+    margin: 20px 0 0 40px;
+  }
+}
+
+body #appContainer #appContent .button {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 190px;
+  height: 41px;
+  background-color: #848E93;
+  border: none;
+  border-radius: 4px;
+}
+
+body #appContainer #appContent .button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 699px) {
+  body #appContainer #appContent .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 429px) {
+  body #appContainer #appContent {
+    padding: 30px 24px 24px;
+  }
+}
+
+body #appContainer footer {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  color: #B4BBBF;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 140px;
+}
+/*# sourceMappingURL=app.css.map */

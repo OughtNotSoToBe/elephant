@@ -1,0 +1,105 @@
+@import "variables";
+
+@mixin regular-font_offers-component {
+    font-family: $font-family_offers-component;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin medium-font_offers-component {
+    font-family: $font-family_offers-component;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@mixin bold-font_offers-component {
+    font-family: $font-family_offers-component;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@mixin text_headerNav {
+    @include regular-font_offers-component();
+    font-size: 16px;
+    color: #0B2127;
+    letter-spacing: 0.4px;
+    line-height: 20px;
+
+    @media (max-width: 429px) {
+        font-size: 16px;
+    }
+}
+
+@mixin text_sortSelector {
+    @include medium-font_offers-component();
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    line-height: 20px;
+}
+
+@mixin text_sortSelector--label {
+    @include text_sortSelector();
+    color: #5A666C;
+}
+
+@mixin text_sortSelector--options {
+    @include text_sortSelector();
+    color: #1079A5;
+}
+
+@mixin text_button {
+    @include bold-font_offers-component();
+    font-size: 16;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+@mixin text_requestedLabel {
+    @include regular-font_offers-component();
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0.35px;
+    line-height: 20px;
+}
+
+@mixin text_terminals {
+    @include bold-font_offers-component();
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.45px;
+    color: #0A2127;
+}
+
+@mixin text_tripDates {
+    @include regular-font_offers-component();
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #7F8D99;
+}
+
+@mixin text_tripDetails {
+    @include regular-font_offers-component();
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.45px;
+    color: #0B2127;
+}
+
+@mixin text_price {
+    @include bold-font_offers-component();
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.45px;
+    color: #49A54E;
+}
+
+@mixin text_footer {
+    @include medium-font_offers-component();
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    color: #B4BBBF;
+    background-color: #FFFFFF;
+}
