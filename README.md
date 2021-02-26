@@ -29,5 +29,6 @@ How to Submit
 
 When you are finished, send an email to your recruiter with: 
 1. URL to your source code. 
-2. URL to your running web app. 
+2. URL to your running web app.
+
 You can use an online code editor (such as https://codesandbox.io) or you may submit a code repository on GitHub. If you choose to use GitHub, please make the code repository private and invite the GitHub account convoy-interview as a collaborator.
