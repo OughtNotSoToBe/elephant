@@ -82,7 +82,7 @@ body {
                     margin-right: 10px;
                 }
 
-                select {
+                #selectSortCriteria {
                     @include text_sortSelector--options();
                     background-color: #EFF5F9;
                     border: 1px solid #E8EEF1;
@@ -216,11 +216,19 @@ body {
                 width: 190px;
                 height: 41px;
                 background-color: #848E93;
-                border: none;
+                border: 2px solid #7A8489;
                 border-radius: 4px;
+                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+                box-sizing: border-box;
 
                 &:hover {
                     cursor: pointer;
+                }
+
+                &:active {
+                    box-shadow:  2px 2px 8px 0px inset rgba(0,0,0,0.3),
+                        1px 1px 1px 1px rgba(0,0,0,0.4);
+                    padding: 2px 0px 0px 2px;
                 }
 
                 @media (max-width: 699px) {
