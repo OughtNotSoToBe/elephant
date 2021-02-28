@@ -3,6 +3,8 @@
 body {
     background-color: #191919;
     margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 
     #appContainer {
         font-family: $font-family_offers-component;
