@@ -1,13 +1,11 @@
 let currentPage = 1;
 const pageListSize = 5;
+let numberOfPages;
+let offersList;
+let pageList;
+let renderPage;
 const startIndex = () => { return currentPage * pageListSize - pageListSize };
 const endIndex = () => { return currentPage * pageListSize };
-const numberOfPages = () => {
-    return Math.ceil(data.length / pageListSize);
-};
-let offersList = [];
-let pageList = [];
-let renderPage = [];
 
 const getOffers = (prop1, prop2, prop3) => {
     document.getElementById("offerList").innerHTML="";
@@ -16,9 +14,11 @@ const getOffers = (prop1, prop2, prop3) => {
         .then(res => res.json())
         .then((data) => {
             offersList = data.sort(sortJSON(prop1, prop2, prop3));
+            numberOfPages = Math.ceil(data.length / pageListSize);
             pageList = () => { return offersList.slice(startIndex(), endIndex()) };
             renderPage = pageList().map(genTemplate).join("\n");
             document.getElementById("offerList").innerHTML=renderPage;
+            document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length + " offers";
     }).catch(err => console.error(err));
 }
 
@@ -128,6 +128,7 @@ const genTemplate = item => {
 
 (init => {
     getOffers("origin", "pickup", "start");
+    document.getElementById("previousPage").style.visibility="hidden";
 })();
 
 document.addEventListener("input", (e) => {
@@ -158,4 +159,13 @@ document.addEventListener("click", (e) => {
         renderPage = pageList().map(genTemplate).join("\n");
         document.getElementById("offerList").innerHTML=renderPage;
     }
+    if (e.target.id === "previousPage") {
+        document.getElementById("offerList").innerHTML="";
+        currentPage -= 1;
+        renderPage = pageList().map(genTemplate).join("\n");
+        document.getElementById("offerList").innerHTML=renderPage;
+    }
+    document.getElementById("previousPage").style.visibility = currentPage === 1 ? "hidden" : "visible";
+    document.getElementById("nextPage").style.visibility = currentPage === numberOfPages ? "hidden" : "visible";
+    document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length + " offers";
 });
