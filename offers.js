@@ -18,7 +18,6 @@ const getOffers = (prop1, prop2, prop3) => {
             pageList = () => { return offersList.slice(startIndex(), endIndex()) };
             renderPage = pageList().map(genTemplate).join("\n");
             document.getElementById("offerList").innerHTML=renderPage;
-            document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length + " offers";
     }).catch(err => console.error(err));
 }
 
@@ -131,6 +130,12 @@ const genTemplate = item => {
     document.getElementById("previousPage").style.visibility="hidden";
 })();
 
+const resetPagination = () => {
+    document.getElementById("previousPage").style.visibility = currentPage === 1 ? "hidden" : "visible";
+    document.getElementById("nextPage").style.visibility = currentPage === numberOfPages ? "hidden" : "visible";
+    document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length + " offers";
+};
+
 document.addEventListener("input", (e) => {
     if (e.target.id !== "selectSortCriteria") {
         return;
@@ -142,7 +147,7 @@ document.addEventListener("input", (e) => {
         origin: "origin,city",
         destination: "destination,city",
         distance: "miles"
-    }    
+    }
     let args = option[e.target.value].split(',');    
     console.log(args[0] + ', ' + args[1] + ', ' + args[2]);
     args.length === 3
@@ -150,6 +155,7 @@ document.addEventListener("input", (e) => {
         : args.length === 2
         ? getOffers(args[0], args[1])
         : getOffers(args[0]);
+        resetPagination();
 });
 
 document.addEventListener("click", (e) => {
@@ -165,7 +171,5 @@ document.addEventListener("click", (e) => {
         renderPage = pageList().map(genTemplate).join("\n");
         document.getElementById("offerList").innerHTML=renderPage;
     }
-    document.getElementById("previousPage").style.visibility = currentPage === 1 ? "hidden" : "visible";
-    document.getElementById("nextPage").style.visibility = currentPage === numberOfPages ? "hidden" : "visible";
-    document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length + " offers";
+    resetPagination();
 });
