@@ -61,7 +61,6 @@ const sortJSON = () => {
                 ? b[prop1]
                 : b[prop1][prop2]
             : b[prop1][prop2][prop3];
-        // console.log("prop1", prop1, "prop2", prop2, "prop3", prop3, textA, textB);
         return (textA < textB)
             ? -1
             : (textA > textB)
@@ -184,7 +183,6 @@ const setPagination = () => {
 };
 
 const processSelection = (pageSizeOption, sortSelection) => {
-    console.log("sortSelection - one Word", sortSelection)
     const options = {
         pickup: "origin,pickup,start",
         dropoff: "destination,dropoff,start",
@@ -193,9 +191,9 @@ const processSelection = (pageSizeOption, sortSelection) => {
         destination: "destination,city",
         distance: "miles"
     }
+    sortOptions = sortSelection;
     pageListSize = pageSizeOption == "all" ? offersList.length : pageSizeOption;
     let sortProps = options[sortSelection];
-    console.log("sortProps - 3 words", sortProps);
     args = sortProps.split(',');
     prop1 = args[0];
     prop2 = args[1];
@@ -209,8 +207,6 @@ const processSelection = (pageSizeOption, sortSelection) => {
 };
 
 document.addEventListener("input", (e) => {
-    console.log("e.target.value", e.target.value);
-
     if (e.target.id === "offerSortSelector") {
         processSelection(pageListSize, e.target.value);
     } else if (e.target.id === "pageSizeSelector") {
