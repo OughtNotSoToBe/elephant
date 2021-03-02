@@ -178,7 +178,8 @@ const processDate = () => {
 const setPagination = () => {
     document.getElementById("previousPage").style.visibility = currentPage === 1 ? "hidden" : "visible";
     document.getElementById("nextPage").style.visibility = currentPage === numberOfPages ? "hidden" : "visible";
-    document.getElementById("pageStatus").innerHTML="Showing " + (startIndex() + 1) + " - " + endIndex() + " of " + offersList.length;
+    const endIndex_max = () => { return endIndex() > offersList.length ? offersList.length :  endIndex() }
+    document.getElementById("pageStatus").innerHTML = "Showing " + (startIndex() + 1) + " - " + endIndex_max() + " of " + offersList.length;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
