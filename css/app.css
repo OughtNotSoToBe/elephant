@@ -1,11 +1,9 @@
 .loadingBg {
-  width: 860px;
-  max-width: 100%;
-  height: 405px;
+  height: 420px;
   border: none;
   z-index: 3;
   opacity: 1;
-  background-color: #FFFFFF;
+  background-color: transparent;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: auto;
@@ -20,7 +18,7 @@ h4 {
 .spinnerSpinner {
   width: 48px;
   height: 48px;
-  margin: 150px 0 0 336px;
+  margin: 150px auto 0;
   -webkit-animation: spin 3s infinite linear;
           animation: spin 3s infinite linear;
 }
@@ -34,7 +32,7 @@ h4 {
 .loadingBg .spinner0 {
   width: 48px;
   height: 48px;
-  margin: 0 0 0 336px;
+  margin: 0 auto;
   -webkit-animation: spin 1.5s infinite linear;
           animation: spin 1.5s infinite linear;
 }
@@ -184,7 +182,9 @@ h4 {
   color: #5A666C;
   font-family: sans-serif;
   font-weight: 500;
-  margin-left: 320px;
+  text-align: center;
+  margin: 20px auto 0;
+  padding-left: 6px;
 }
 
 @-webkit-keyframes spin {
