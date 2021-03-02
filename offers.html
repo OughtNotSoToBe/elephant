@@ -1,0 +1,40 @@
+<div class="offers">
+    <div class="offers-header">
+        <img class="offers-header-logo" src="images/convoy_logo.png" alt="Convoy company logo">
+        <ul class="offers-header-nav">
+            <li class="offers-header-nav-navItem active">Offers</li>
+            <li class="offers-header-nav-navItem">My Jobs</li>
+        </ul>
+    </div>
+    <div class="offers-content">
+        <div class="offers-content-sort">
+            <label class="offers-content-sort-label">Sort by:</label>
+            <select id="offerSortSelector" class="offers-content-sort-dropdown">
+                <option value="pickup">Pick-up Date</option>
+                <option value="dropoff">Drop-off Date</option>
+                <option value="origin">Origin</option>
+                <option value="destination">Destination</option>
+                <option value="distance">Distance (miles)</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+        <div id="preloader"></div>
+        <div id="offerList" class="offers-content-list">
+        </div>
+        <div class="offers-content-pagination">
+            <div class="offers-content-pagination-pageSize">
+                <label class="offers-content-pagination-pageSize-label">Offers per page</label>
+                <select id="pageSizeSelector" class="offers-content-pagination-pageSize-dropdown">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="all">Show All</option>
+                </select>
+            </div>
+            <div class="offers-content-pagination-navigation">
+                <div id="previousPage" class="offers-content-pagination-navigation-button">Previous Page</div>
+                <div id= "pageStatus" class="offers-content-pagination-navigation-status"></div>
+                <div id="nextPage" class="offers-content-pagination-navigation-button">Next Page</div>
+            </div>  
+        </div>
+    </div>
+</div>

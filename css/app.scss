@@ -1,1 +1,17 @@
+@import "components/preloader";
 @import "components/offers";
+
+body {
+    background-color: #191919;
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+
+    footer {
+        @include text_footer();
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 140px;
+    }
+}

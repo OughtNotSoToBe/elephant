@@ -1,229 +1,251 @@
 @import "../modules/allModules";
 
-body {
-    background-color: #191919;
-    margin: 0;
+.offers {
+    font-family: $font-family_offers-component;
+    width: 860px;
+    min-width: 360px;
     max-width: 100%;
-    overflow-x: hidden;
+    margin: auto;
+    background-color: #F7F7F7;
 
-    #appContainer {
-        font-family: $font-family_offers-component;
-        width: 860px;
-        min-width: 360px;
-        max-width: 100%;
-        margin: auto;
-        background-color: #F7F7F7;
+    &-header {
+        display: flex;
+        align-items: center;
+        height: 56px;
+        padding: 0 40px;
+        background-color: #FFFFFF;
+        
+        &-logo {
+            width: 111px;
+            height: 16px;
+        }
 
-        #appHeader {
+        &-nav {
+            list-style-type: none;
             display: flex;
-            align-items: center;
-            height: 56px;
-            padding: 0 40px;
-            background-color: #FFFFFF;
-            
-            #headerLogo {
-                width: 111px;
-                height: 16px;
-            }
+            margin: 0 0 0 30px;
+            padding: 0;
 
-            #headerNav {
-                list-style-type: none;
+            &-navItem {
+                @include text_headerNav();
+                padding: 0 25px;
+                height: 56px;
+                box-sizing: border-box;
+                border-top: 4px solid transparent;
+                border-bottom: 4px solid transparent;
                 display: flex;
-                margin: 0 0 0 30px;
-                padding: 0;
+                align-items: center;
 
-                .navItem {
-                    @include text_headerNav();
-                    padding: 0 25px;
-                    height: 56px;
-                    box-sizing: border-box;
-                    border-top: 4px solid transparent;
-                    border-bottom: 4px solid transparent;
-                    display: flex;
-                    align-items: center;
+                &:hover {
+                    cursor: pointer;
 
-                    &:hover {
-                        cursor: pointer;
-
-                        &:not(.active) {
-                            border-bottom: 4px solid rgba(246,83,53,0.4);
-                        }
-                    }
-
-                    &.active {
-                        border-bottom: 4px solid #F65335;
-                    }
-
-                    @media (max-width: 429px) {
-                        padding: 0 17px;
+                    &:not(.active) {
+                        border-bottom: 4px solid rgba(246,83,53,0.4);
                     }
                 }
-            }
 
-            @media (max-width: 429px) {
-                padding: 0 20px;
+                &.active {
+                    border-bottom: 4px solid #F65335;
+                }
+
+                @media (max-width: 429px) {
+                    padding: 0 17px;
+                }
             }
         }
 
-        #appContent {
-            padding: 30px 48px 24px;
+        @media (max-width: 429px) {
+            padding: 0 20px;
+        }
+    }
 
-            #sortSelector {
+    &-content {
+        padding: 30px 48px 24px;
+
+        &-sort {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            background-color: #F7F9FA;
+            border: 1px solid #D6DADC;
+            border-radius: 4px;
+            height: 52px;
+            box-sizing: border-box;
+
+            &-label {
+                @include text_dropdown--label();
+                margin-right: 10px;
+            }
+
+            &-dropdown {
+                @include text_dropdown--options();
+                background-color: #EDF5F6;
+                border: 1px solid #E3E9EC;
+                border-radius: 2px;
+                height: 24px;
+                
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        
+        &-list {
+            margin-bottom: 20px;
+            border: 1px solid #D6DADC;
+            border-radius: 4px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+            &-offer {
+                padding: 17px 21px;
+                border-bottom: 1px solid #D6DADC;
+
+                &-label {
+                    margin-bottom: 14px;
+
+                    &-requested {
+                        @include text_requestedLabel();
+                        display: inline-flex;
+                        align-items: center;
+                        background-color: #14A9E6;
+                        padding: 1px 10px 0;
+                        line-height: 20px;
+                        height: 24px;
+                        box-sizing: border-box;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &-details {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    padding: 0 14px;
+
+                    &-waypoints {
+                        display: flex;
+                        flex-direction: row;
+
+                        &-connectorDots {
+                            display: flex;
+                            flex-direction: column;
+                            margin: 5px 10px 0 0;
+
+                            &-connector {
+                                width: 1px;
+                                height: 50px;
+                                border-right: 1px solid #B5BBBE;
+                                box-sizing: border-box;
+                                margin-left: 4px;
+                            }
+
+                            &-dot {
+                                width: 9px;
+                                height: 9px;
+                                background-color: #B5BBBE;
+                                border-radius: 50%;
+                                box-sizing: border-box;
+                            }
+                        }
+
+                        &-terminals {
+                            display: flex;
+                            flex-direction: column;
+
+                            &-departure {
+                                margin: 0 0 20px 0;
+
+                                &-origin {
+                                    @include text_terminals();
+                                }
+
+                                &-date {
+                                    @include text_tripDates();
+                                }
+                            }
+
+                            &-arrival {
+
+                                &-destination {
+                                    @include text_terminals();
+                                }
+
+                                &-date {
+                                    @include text_tripDates();
+                                }
+                            }
+                        }
+                    }
+
+                    &-containerType,
+                    &-mileage {
+                        @include text_tripDetails();
+                    }
+
+                    &-price {
+                        @include text_price();
+                    }
+
+                    @media (max-width: 699px) {
+                        flex-direction: column;
+
+                        &-containerType,
+                        &-mileage,
+                        &-price {
+                            margin: 20px 0 0 40px;
+                        }
+                    }
+                }
+            }    
+        }
+
+        &-pagination {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+
+            &-pageSize {
                 display: flex;
+                flex-direction: row;
+                flex-basis: 100%;
+                justify-content: flex-end;
                 align-items: center;
                 margin-bottom: 10px;
-                padding-left: 20px;
-                background-color: #F7F9FA;
-                border: 1px solid #D6DADC;
-                border-radius: 4px;
-                height: 52px;
-                box-sizing: border-box;
 
-                label {
-                    @include text_sortSelector--label();
+                &-label {
+                    @include text_dropdown--label();
                     margin-right: 10px;
                 }
 
-                #selectSortCriteria {
-                    @include text_sortSelector--options();
-                    background-color: #EFF5F9;
-                    border: 1px solid #E8EEF1;
+                &-dropdown {
+                    @include text_dropdown--options();
+                    background-color: #EDF5F6;
+                    border: 1px solid #E3E9EC;
                     border-radius: 2px;
                     height: 24px;
-                    
-                    &:hover {
-                        cursor: pointer;
-                    }
+                    padding-top: 1px;
+                }
+
+                &:hover {
+                    cursor: pointer;
                 }
             }
-            
-            #offerList {
-                margin-bottom: 20px;
-                border: 1px solid #D6DADC;
-                border-radius: 4px;
-                background-color: #FFFFFF;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 
-                .offer {
-                    padding: 17px 21px;
-                    border-bottom: 1px solid #D6DADC;
-
-                    &-label {
-                        margin-bottom: 14px;
-
-                        &-requested {
-                            @include text_requestedLabel();
-                            display: inline-flex;
-                            align-items: center;
-                            background-color: #14A9E6;
-                            padding: 1px 10px 0;
-                            line-height: 20px;
-                            height: 24px;
-                            box-sizing: border-box;
-                        }
-                    }
-
-                    &:last-child {
-                        border-bottom: none;
-                    }
-
-                    &-details {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        padding: 0 14px;
-
-                        &-waypoints {
-                            display: flex;
-                            flex-direction: row;
-
-                            &-connectorDots {
-                                display: flex;
-                                flex-direction: column;
-                                margin: 5px 10px 0 0;
-
-                                &-connector {
-                                    width: 1px;
-                                    height: 50px;
-                                    border-right: 1px solid #B5BBBE;
-                                    box-sizing: border-box;
-                                    margin-left: 4px;
-                                }
-
-                                &-dot {
-                                    width: 9px;
-                                    height: 9px;
-                                    background-color: #B5BBBE;
-                                    border-radius: 50%;
-                                    box-sizing: border-box;
-                                }
-                            }
-
-                            &-terminals {
-                                display: flex;
-                                flex-direction: column;
-    
-                                &-departure {
-                                    margin: 0 0 20px 0;
-    
-                                    &-origin {
-                                        @include text_terminals();
-                                    }
-    
-                                    &-date {
-                                        @include text_tripDates();
-                                    }
-                                }
-    
-                                &-arrival {
-    
-                                    &-destination {
-                                        @include text_terminals();
-                                    }
-    
-                                    &-date {
-                                        @include text_tripDates();
-                                    }
-                                }
-                            }
-                        }
-
-                        &-containerType,
-                        &-mileage {
-                            @include text_tripDetails();
-                        }
-
-                        &-price {
-                            @include text_price();
-                        }
-
-                        @media (max-width: 699px) {
-                            flex-direction: column;
-
-                            &-containerType,
-                            &-mileage,
-                            &-price {
-                                margin: 20px 0 0 40px;
-                            }
-                        }
-                    }
-                }    
-            }
-
-            #pagination {
+            &-navigation {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+                align-items: center;
                 flex-wrap: wrap;
 
-                #pageStatus {
-                    flex-basis: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    color: #1079A5
-                }
-
-                .button {
+                &-button {
                     @include text_button();
                     display: flex;
                     align-items: center;
@@ -250,18 +272,23 @@ body {
                         width: 140px;
                     }
                 }
+
+                &-status {
+                    color: #1079A5;
+
+                    @media (max-width: 599px) {
+                        flex-basis: 100%;
+                        order: 3;
+                        text-align: center;
+                        margin-top: 20px;
+                    }
+                }
             }
 
-            @media (max-width: 429px) {
-                padding: 30px 24px 24px;
-            }
         }
-        footer {
-            @include text_footer();
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 140px;
+
+        @media (max-width: 429px) {
+            padding: 30px 24px 24px;
         }
     }
 }

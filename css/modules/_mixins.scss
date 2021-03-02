@@ -30,20 +30,20 @@
     }
 }
 
-@mixin text_sortSelector {
+@mixin text_dropdown {
     @include medium-font_offers-component();
     font-size: 16px;
     letter-spacing: 0.4px;
     line-height: 20px;
 }
 
-@mixin text_sortSelector--label {
-    @include text_sortSelector();
+@mixin text_dropdown--label {
+    @include text_dropdown();
     color: #5A666C;
 }
 
-@mixin text_sortSelector--options {
-    @include text_sortSelector();
+@mixin text_dropdown--options {
+    @include text_dropdown();
     color: #1079A5;
 }
 

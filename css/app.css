@@ -1,11 +1,424 @@
-body {
-  background-color: #191919;
-  margin: 0;
-  max-width: 100%;
-  overflow-x: hidden;
+.loadingBg {
+  width: 720px;
+  height: 405px;
+  border: none;
+  z-index: 3;
+  opacity: 1;
+  background-color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  padding-top: 10px;
 }
 
-body #appContainer {
+h4 {
+  font-family: 'Segoe UI', arial, sans-serif;
+  text-align: center;
+}
+
+.spinnerSpinner {
+  width: 48px;
+  height: 48px;
+  margin: 150px 0 0 336px;
+  -webkit-animation: spin 3s infinite linear;
+          animation: spin 3s infinite linear;
+}
+
+.loadingBg .mask {
+  width: 13px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.loadingBg .spinner0 {
+  width: 48px;
+  height: 48px;
+  margin: 0 0 0 336px;
+  -webkit-animation: spin 1.5s infinite linear;
+          animation: spin 1.5s infinite linear;
+}
+
+.loadingBg .spinner0 .mask {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.loadingBg .spinner8 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 4.5px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner2 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 4.5px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner3 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 3.5px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner4 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 3px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner5 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 2.5px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner6 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 2px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner7 .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1.5px solid #5A666C;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner0 .mask .maskedCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 4px solid #969696;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loadingBg .spinner2,
+.loadingBg .spinner3,
+.loadingBg .spinner4,
+.loadingBg .spinner5,
+.loadingBg .spinner6,
+.loadingBg .spinner7,
+.loadingBg .spinner8 {
+  margin: -48px 0 0 0;
+  width: 48px;
+  height: 48px;
+}
+
+.loadingBg .spinner {
+  width: 48px;
+  height: 48px;
+  -webkit-animation: spin 1.3s infinite linear;
+          animation: spin 1.3s infinite linear;
+}
+
+.loadingBg .spinner2 {
+  -webkit-animation: spin2 1.3s infinite linear;
+          animation: spin2 1.3s infinite linear;
+}
+
+.loadingBg .spinner3 {
+  -webkit-animation: spin3 1.3s infinite linear;
+          animation: spin3 1.3s infinite linear;
+}
+
+.loadingBg .spinner4 {
+  -webkit-animation: spin4 1.3s infinite linear;
+          animation: spin4 1.3s infinite linear;
+}
+
+.loadingBg .spinner5 {
+  -webkit-animation: spin5 1.3s infinite linear;
+          animation: spin5 1.3s infinite linear;
+}
+
+.loadingBg .spinner6 {
+  -webkit-animation: spin6 1.3s infinite linear;
+          animation: spin6 1.3s infinite linear;
+}
+
+.loadingBg .spinner7 {
+  -webkit-animation: spin7 1.3s infinite linear;
+          animation: spin7 1.3s infinite linear;
+}
+
+.loadingBg .spinner8 {
+  -webkit-animation: spin8 1.3s infinite linear;
+          animation: spin8 1.3s infinite linear;
+}
+
+.loadingBg h3 {
+  color: #5A666C;
+  font-family: sans-serif;
+  font-weight: 500;
+  margin-left: 320px;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  16% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  16% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin3 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  30% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin3 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  30% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin4 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  35% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin4 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  35% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin5 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  44% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin5 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  44% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin6 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  55% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin6 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  55% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin7 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  64% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin7 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  64% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin8 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  73% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin8 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  73% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.offers {
   font-family: Avenir, sans-serif;
   width: 860px;
   min-width: 360px;
@@ -14,7 +427,7 @@ body #appContainer {
   background-color: #F7F7F7;
 }
 
-body #appContainer #appHeader {
+.offers-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,12 +439,12 @@ body #appContainer #appHeader {
   background-color: #FFFFFF;
 }
 
-body #appContainer #appHeader #headerLogo {
+.offers-header-logo {
   width: 111px;
   height: 16px;
 }
 
-body #appContainer #appHeader #headerNav {
+.offers-header-nav {
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,7 +453,7 @@ body #appContainer #appHeader #headerNav {
   padding: 0;
 }
 
-body #appContainer #appHeader #headerNav .navItem {
+.offers-header-nav-navItem {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -63,40 +476,40 @@ body #appContainer #appHeader #headerNav .navItem {
 }
 
 @media (max-width: 429px) {
-  body #appContainer #appHeader #headerNav .navItem {
+  .offers-header-nav-navItem {
     font-size: 16px;
   }
 }
 
-body #appContainer #appHeader #headerNav .navItem:hover {
+.offers-header-nav-navItem:hover {
   cursor: pointer;
 }
 
-body #appContainer #appHeader #headerNav .navItem:hover:not(.active) {
+.offers-header-nav-navItem:hover:not(.active) {
   border-bottom: 4px solid rgba(246, 83, 53, 0.4);
 }
 
-body #appContainer #appHeader #headerNav .navItem.active {
+.offers-header-nav-navItem.active {
   border-bottom: 4px solid #F65335;
 }
 
 @media (max-width: 429px) {
-  body #appContainer #appHeader #headerNav .navItem {
+  .offers-header-nav-navItem {
     padding: 0 17px;
   }
 }
 
 @media (max-width: 429px) {
-  body #appContainer #appHeader {
+  .offers-header {
     padding: 0 20px;
   }
 }
 
-body #appContainer #appContent {
+.offers-content {
   padding: 30px 48px 24px;
 }
 
-body #appContainer #appContent #sortSelector {
+.offers-content-sort {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,7 +526,7 @@ body #appContainer #appContent #sortSelector {
           box-sizing: border-box;
 }
 
-body #appContainer #appContent #sortSelector label {
+.offers-content-sort-label {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -124,7 +537,7 @@ body #appContainer #appContent #sortSelector label {
   margin-right: 10px;
 }
 
-body #appContainer #appContent #sortSelector #selectSortCriteria {
+.offers-content-sort-dropdown {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -132,17 +545,17 @@ body #appContainer #appContent #sortSelector #selectSortCriteria {
   letter-spacing: 0.4px;
   line-height: 20px;
   color: #1079A5;
-  background-color: #EFF5F9;
-  border: 1px solid #E8EEF1;
+  background-color: #EDF5F6;
+  border: 1px solid #E3E9EC;
   border-radius: 2px;
   height: 24px;
 }
 
-body #appContainer #appContent #sortSelector #selectSortCriteria:hover {
+.offers-content-sort-dropdown:hover {
   cursor: pointer;
 }
 
-body #appContainer #appContent #offerList {
+.offers-content-list {
   margin-bottom: 20px;
   border: 1px solid #D6DADC;
   border-radius: 4px;
@@ -151,16 +564,16 @@ body #appContainer #appContent #offerList {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-body #appContainer #appContent #offerList .offer {
+.offers-content-list-offer {
   padding: 17px 21px;
   border-bottom: 1px solid #D6DADC;
 }
 
-body #appContainer #appContent #offerList .offer-label {
+.offers-content-list-offer-label {
   margin-bottom: 14px;
 }
 
-body #appContainer #appContent #offerList .offer-label-requested {
+.offers-content-list-offer-label-requested {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -182,11 +595,11 @@ body #appContainer #appContent #offerList .offer-label-requested {
           box-sizing: border-box;
 }
 
-body #appContainer #appContent #offerList .offer:last-child {
+.offers-content-list-offer:last-child {
   border-bottom: none;
 }
 
-body #appContainer #appContent #offerList .offer-details {
+.offers-content-list-offer-details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,7 +613,7 @@ body #appContainer #appContent #offerList .offer-details {
   padding: 0 14px;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints {
+.offers-content-list-offer-details-waypoints {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,7 +623,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints {
           flex-direction: row;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots {
+.offers-content-list-offer-details-waypoints-connectorDots {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -221,7 +634,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots
   margin: 5px 10px 0 0;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots-connector {
+.offers-content-list-offer-details-waypoints-connectorDots-connector {
   width: 1px;
   height: 50px;
   border-right: 1px solid #B5BBBE;
@@ -230,7 +643,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots
   margin-left: 4px;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots-dot {
+.offers-content-list-offer-details-waypoints-connectorDots-dot {
   width: 9px;
   height: 9px;
   background-color: #B5BBBE;
@@ -239,7 +652,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-connectorDots
           box-sizing: border-box;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals {
+.offers-content-list-offer-details-waypoints-terminals {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -249,11 +662,11 @@ body #appContainer #appContent #offerList .offer-details-waypoints-terminals {
           flex-direction: column;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure {
+.offers-content-list-offer-details-waypoints-terminals-departure {
   margin: 0 0 20px 0;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure-origin {
+.offers-content-list-offer-details-waypoints-terminals-departure-origin {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -263,7 +676,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-terminals-dep
   color: #0A2127;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals-departure-date {
+.offers-content-list-offer-details-waypoints-terminals-departure-date {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -273,7 +686,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-terminals-dep
   color: #7F8D99;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arrival-destination {
+.offers-content-list-offer-details-waypoints-terminals-arrival-destination {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -283,7 +696,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arr
   color: #0A2127;
 }
 
-body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arrival-date {
+.offers-content-list-offer-details-waypoints-terminals-arrival-date {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -293,7 +706,7 @@ body #appContainer #appContent #offerList .offer-details-waypoints-terminals-arr
   color: #7F8D99;
 }
 
-body #appContainer #appContent #offerList .offer-details-containerType, body #appContainer #appContent #offerList .offer-details-mileage {
+.offers-content-list-offer-details-containerType, .offers-content-list-offer-details-mileage {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -303,7 +716,7 @@ body #appContainer #appContent #offerList .offer-details-containerType, body #ap
   color: #0B2127;
 }
 
-body #appContainer #appContent #offerList .offer-details-price {
+.offers-content-list-offer-details-price {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -314,18 +727,83 @@ body #appContainer #appContent #offerList .offer-details-price {
 }
 
 @media (max-width: 699px) {
-  body #appContainer #appContent #offerList .offer-details {
+  .offers-content-list-offer-details {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  body #appContainer #appContent #offerList .offer-details-containerType, body #appContainer #appContent #offerList .offer-details-mileage, body #appContainer #appContent #offerList .offer-details-price {
+  .offers-content-list-offer-details-containerType, .offers-content-list-offer-details-mileage, .offers-content-list-offer-details-price {
     margin: 20px 0 0 40px;
   }
 }
 
-body #appContainer #appContent #pagination {
+.offers-content-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.offers-content-pagination-pageSize {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.offers-content-pagination-pageSize-label {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  color: #5A666C;
+  margin-right: 10px;
+}
+
+.offers-content-pagination-pageSize-dropdown {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  color: #1079A5;
+  background-color: #EDF5F6;
+  border: 1px solid #E3E9EC;
+  border-radius: 2px;
+  height: 24px;
+  padding-top: 1px;
+}
+
+.offers-content-pagination-pageSize:hover {
+  cursor: pointer;
+}
+
+.offers-content-pagination-navigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -336,19 +814,14 @@ body #appContainer #appContent #pagination {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-body #appContainer #appContent #pagination #pageStatus {
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #1079A5;
-}
-
-body #appContainer #appContent #pagination .button {
+.offers-content-pagination-navigation-button {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -376,29 +849,52 @@ body #appContainer #appContent #pagination .button {
           box-sizing: border-box;
 }
 
-body #appContainer #appContent #pagination .button:hover {
+.offers-content-pagination-navigation-button:hover {
   cursor: pointer;
 }
 
-body #appContainer #appContent #pagination .button:active {
+.offers-content-pagination-navigation-button:active {
   -webkit-box-shadow: 2px 2px 8px 0px inset rgba(0, 0, 0, 0.3), 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
           box-shadow: 2px 2px 8px 0px inset rgba(0, 0, 0, 0.3), 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
   padding: 2px 0px 0px 2px;
 }
 
 @media (max-width: 699px) {
-  body #appContainer #appContent #pagination .button {
+  .offers-content-pagination-navigation-button {
     width: 140px;
   }
 }
 
+.offers-content-pagination-navigation-status {
+  color: #1079A5;
+}
+
+@media (max-width: 599px) {
+  .offers-content-pagination-navigation-status {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 429px) {
-  body #appContainer #appContent {
+  .offers-content {
     padding: 30px 24px 24px;
   }
 }
 
-body #appContainer footer {
+body {
+  background-color: #191919;
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body footer {
   font-family: Avenir, sans-serif;
   font-style: normal;
   font-weight: 500;
