@@ -221,6 +221,9 @@ document.addEventListener("input", (e) => {
 });
 
 document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("button")) {
+        return;
+    }
     if (e.target.id === "nextPage") {
         document.getElementById("offerList").innerHTML="";
         currentPage += 1;
@@ -233,4 +236,5 @@ document.addEventListener("click", (e) => {
         renderPage = pageList().map(genTemplate).join("\n");
         document.getElementById("offerList").innerHTML=renderPage;
     }
+    setPagination();
 });
