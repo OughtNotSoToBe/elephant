@@ -10,8 +10,21 @@ let prop1 = "origin";
 let prop2 = "pickup";
 let prop3 = "start";
 let sortOptions = "pickup";
-const startIndex = () => { return currentPage * pageListSize - pageListSize };
-const endIndex = () => { return currentPage * pageListSize };
+
+const initOffers = () => {
+    initPreloader();
+    currentPage = 1;
+    pageListSize = 5;
+    getOffers();
+};
+
+const startIndex = () => {
+    return currentPage * pageListSize - pageListSize
+};
+
+const endIndex = () => {
+    return currentPage * pageListSize
+};
 
 const initPreloader = () => {
     fetch("preloader.html")
@@ -31,24 +44,13 @@ const getOffers = () => {
     .catch(err => console.error(err));
 }
 
-const processOffers = () => {
-    currentPage = 1;
-    offersList = fetchedOffers.sort(sortJSON());
-    numberOfPages = Math.ceil(offersList.length / pageListSize);
-    pageList = () => { return offersList.slice(startIndex(), endIndex()) };
-    renderPage = pageList().map(genTemplate).join("\n");
-    document.getElementById("offerList").innerHTML=renderPage;
-    setPagination();
-}
-
-// The actual sort property comes from one of three possible levels within the JSON object:
-//      "foo"
-//      "foo.bar"
-//      "foo.bar.baz"
-// You can pass a variable with index notation, but not with dot notation.
-//      This mess below is a cumbersome solution
+// Here be dragons - tread lightly!
+// Just kidding, but UGH! This function takes 3 global variables that represent nested object properties, and converts them into a single 
+// property value on which to sort the items that are returned by the map function. The property keys can be either 1, 2, or 3 levels deep:
+// item.foo, item.foo.bar, or item.foo.bar.baz
+// Dot notation doesn't support variables, so I came up with this ugly thing.
 //
-// TO DO: Figure out a regex or some other solution to handle this!
+// TO DO: Figure out a regex or some other (ANY other) solution to handle this...
 const sortJSON = () => {
     return function(a, b) {
         let textA = !prop3
@@ -69,111 +71,15 @@ const sortJSON = () => {
     }
 }
 
-// The "genTemplate" function does way too many things. Need to split this up.
-const genTemplate = item => {
-    const local = new Date();
-    // This converts the time from zulu to the local time zone of the client.
-    // It would be more ideal to correct for the time zones of the origin and destination.
-    // TO DO: Make sure that when local time and zulu time fall on a different day,
-        // the date change also gets reflected in the UI
-        // (This should be done before the date string is split)
-    const timezoneOffset = local.getTimezoneOffset() / 60;
-    const pickupDateStart = item.origin.pickup.start.split("T")[0];
-    const pickupDateEnd = item.origin.pickup.end.split("T")[0] === pickupDateStart
-        ? ""
-        : item.origin.pickup.end.split("T")[0] + ", ";
-    let pickupTimeStart = item.origin.pickup.start.split("T")[1].substring(0,5);
-    // ptsHour (pickupTimeStart hour) represents the characters in the string that represent the hour.
-        // and this definition keeps the hour out of negative values after applying the time zone offset.
-        // TO DO: Really need to convert the time back to the standard date string, then apply the offset
-            // so that all this garbage can be deleted.
-    let ptsHour = parseInt(pickupTimeStart.substring(0,2)) - timezoneOffset < 0 
-        ? parseInt(pickupTimeStart.substring(0,2)) - timezoneOffset + 24
-        : parseInt(pickupTimeStart.substring(0,2)) - timezoneOffset;
-    if (ptsHour < 10) {
-        ptsHour = "0" + ptsHour;
-    }
-    pickupTimeStart = ptsHour + pickupTimeStart.substring(2, 6);
-    let pickupTimeEnd = item.origin.pickup.end.split("T")[1].substring(0,5) === pickupTimeStart
-        ? ""
-        : item.origin.pickup.end.split("T")[1].substring(0,5);
-    // pteHour (pickupTimeEnd Hour) - see the comment for ptsHour ^^
-    let pteHour = pickupTimeEnd.length > 0 && parseInt(pickupTimeEnd.substring(0,2)) - timezoneOffset < 0
-        ? parseInt(pickupTimeEnd.substring(0,2)) - timezoneOffset + 24
-        : parseInt(pickupTimeEnd.substring(0,2)) - timezoneOffset;
-    if (pteHour < 10) {
-        pteHour = "0" + pteHour;
-    }
-    pickupTimeEnd = pteHour + pickupTimeEnd.substring(2, 6);
-    const startPickup = pickupDateStart + ", " + pickupTimeStart;
-    const endPickup = !pickupDateEnd 
-        ? pickupTimeEnd
-        : pickupDateEnd + pickupTimeEnd;
-    const pickupWindow_isRange = !pickupDateEnd && !pickupTimeEnd
-        ? false
-        : true;
-    const pickupWindow = pickupWindow_isRange
-        ? startPickup + " - " + endPickup
-        : startPickup;
-    const dropoffDateStart = item.destination.dropoff.start.split("T")[0];
-    const dropoffDateEnd = item.destination.dropoff.end.split("T")[0] === dropoffDateStart
-        ? ""
-        : item.destination.dropoff.end.split("T")[0] + ", ";
-    const dropoffTimeStart = item.destination.dropoff.start.split("T")[1].substring(0,5);
-    const dropoffTimeEnd = item.destination.dropoff.end.split("T")[1].substring(0,5) === dropoffTimeStart
-        ? ""
-        : item.destination.dropoff.end.split("T")[1].substring(0,5);
-    const startDropoff = dropoffDateStart + ", " + dropoffTimeStart;
-    const endDropoff = !dropoffDateEnd
-        ? dropoffTimeEnd
-        : dropoffDateEnd + dropoffTimeEnd;
-    const dropoffWindow_isRange = !dropoffDateEnd && !dropoffTimeEnd
-        ? false
-        : true;
-    const dropoffWindow = dropoffWindow_isRange
-        ? startDropoff + " - " + endDropoff
-        : startDropoff;
-    const price = Math.trunc(item.offer);
-
-    return `<div class="offers-content-list-offer">
-                <div class="offers-content-list-offer-label">
-                    <!-- This "requested" identifier was in the red line doc... when is it ever used? -->
-                    <!-- <div class="offers-content-list-offer-label-requested">REQUESTED</div> -->
-                </div>
-                <div class="offers-content-list-offer-details">
-                    <div class="offers-content-list-offer-details-waypoints">
-                        <div class="offers-content-list-offer-details-waypoints-connectorDots">
-                            <div class="offers-content-list-offer-details-waypoints-connectorDots-dot"></div>
-                            <div class="offers-content-list-offer-details-waypoints-connectorDots-connector"></div>
-                            <div class="offers-content-list-offer-details-waypoints-connectorDots-dot"></div>
-                        </div>
-                        <div class="offers-content-list-offer-details-waypoints-terminalss">
-                            <div class="offers-content-list-offer-details-waypoints-terminals-departure">
-                                <div class="offers-content-list-offer-details-waypoints-terminals-departure-origin">${item.origin.city}, ${item.origin.state}</div>
-                                <div class="offers-content-list-offer-details-waypoints-terminals-departure-date">${pickupWindow}</div>
-                            </div>
-                            <div class="offers-content-list-offer-details-waypoints-terminals-arrival">
-                                <div class="offers-content-list-offer-details-waypoints-terminals-arrival-destination">${item.destination.city}, ${item.destination.state}</div>
-                                <div class="offers-content-list-offer-details-waypoints-terminals-arrival-date">${dropoffWindow}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offers-content-list-offer-details-mileage">${item.miles} miles</div>
-                    <div class="offers-content-list-offer-details-price">$${price}</div>
-                </div>
-            </div>`
-};
-
-const initOffers = () => {
-    initPreloader();
+const processOffers = () => {
     currentPage = 1;
-    pageListSize = 5;
-    getOffers();
-};
-
-const processDate = () => {
-
-};
+    offersList = fetchedOffers.sort(sortJSON());
+    numberOfPages = Math.ceil(offersList.length / pageListSize);
+    pageList = () => { return offersList.slice(startIndex(), endIndex()) };
+    renderPage = pageList().map(genTemplate).join("\n");
+    document.getElementById("offerList").innerHTML=renderPage;
+    setPagination();
+}
 
 const setPagination = () => {
     document.getElementById("previousPage").style.visibility = currentPage === 1 ? "hidden" : "visible";
@@ -203,13 +109,115 @@ const processSelection = (pageSizeOption, sortSelection) => {
     args = sortProps.split(',');
     prop1 = args[0];
     prop2 = args[1];
-    prop3 = args[3];
+    prop3 = args[2];
     args.length === 3
         ? getOffers(prop1, prop2, prop3)
         : args.length === 2
         ? getOffers(prop1, prop2)
         : getOffers(prop1);
         setPagination();
+};
+
+
+const processDate = (start, end) => {
+    const date1 = new Date(start);
+    const date2 = new Date(end);
+    
+    const days = {
+        0: "Sun",
+        1: "Mon",
+        2: "Tue",
+        3: "Wed",
+        4: "Thu",
+        5: "Fri",
+        6: "Sat"
+    }
+
+    const months = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        4: 5,
+        5: 6,
+        6: 7,
+        7: 8,
+        8: 9,
+        9: 10,
+        10: 11,
+        11: 12
+    }
+
+    const formatHours = (date) => {
+        return date.getHours() < 10
+            ? "0" + date.getHours()
+            : date.getHours();
+    }
+    const formatMinutes = (date) => {
+        return date.getMinutes() < 10
+            ? "0" + date.getMinutes()
+            : date.getMinutes();
+    }
+
+    const date1_output = () => {
+        return days[date1.getDay()] + " "
+        + months[date1.getMonth()] + "/"
+        + date1.getDate() + " "
+        + formatHours(date1) + ":"
+        + formatMinutes(date1);
+    }
+    
+    const date2_output = () => {
+        return date2 === date1
+            ? ""
+            : " - " + formatHours(date2)
+                + ":" + formatMinutes(date2);
+    }
+
+    const renderDate = () => {
+        return date1_output() + date2_output();
+    }
+
+    return renderDate();
+};
+
+const genTemplate = item => {
+    const pickupStart = item.origin.pickup.start;
+    const pickupEnd = item.origin.pickup.end;
+    const dropoffStart = item.destination.dropoff.start;
+    const dropoffEnd = item.destination.dropoff.end;
+    const price = Math.trunc(item.offer);
+    const distance = (number) => {
+        return number.toLocaleString();
+    }
+
+    return `<div class="offers-content-list-offer">
+                <div class="offers-content-list-offer-label">
+                    <!-- This "requested" identifier was in the red line doc... when is it ever used? -->
+                    <!-- <div class="offers-content-list-offer-label-requested">REQUESTED</div> -->
+                </div>
+                <div class="offers-content-list-offer-details">
+                    <div class="offers-content-list-offer-details-waypoints">
+                        <div class="offers-content-list-offer-details-waypoints-connectorDots">
+                            <div class="offers-content-list-offer-details-waypoints-connectorDots-dot"></div>
+                            <div class="offers-content-list-offer-details-waypoints-connectorDots-connector"></div>
+                            <div class="offers-content-list-offer-details-waypoints-connectorDots-dot"></div>
+                        </div>
+                        <div class="offers-content-list-offer-details-waypoints-terminalss">
+                            <div class="offers-content-list-offer-details-waypoints-terminals-departure">
+                                <div class="offers-content-list-offer-details-waypoints-terminals-departure-origin">${item.origin.city}, ${item.origin.state}</div>
+                                <div class="offers-content-list-offer-details-waypoints-terminals-departure-date">${processDate(pickupStart, pickupEnd)}</div>
+                            </div>
+                            <div class="offers-content-list-offer-details-waypoints-terminals-arrival">
+                                <div class="offers-content-list-offer-details-waypoints-terminals-arrival-destination">${item.destination.city}, ${item.destination.state}</div>
+                                <div class="offers-content-list-offer-details-waypoints-terminals-arrival-date">${processDate(dropoffStart, dropoffEnd)}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offers-content-list-offer-details-mileage">${distance(item.miles)} miles</div>
+                    <div class="offers-content-list-offer-details-price">$${price}</div>
+                </div>
+            </div>`
 };
 
 document.addEventListener("input", (e) => {
