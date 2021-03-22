@@ -1,3 +1,9 @@
+// NOTES:   I made an egregious oversight when I set out to complete this exercise: 
+//          The API has parameters that handle sorting and pagination. Call it nerves or whatever,
+//          but I missed that tiny detail and set out to build in those functionalities from scratch.
+//          (The whole time I was thinking: "Dang, this is a lot of work for a coding assessment!")
+//          I turned it in, then I discovered my error. They invited me for a final interview, nevertheless.
+
 let preloader;
 let currentPage;
 let fetchedOffers;
@@ -44,13 +50,12 @@ const getOffers = () => {
     .catch(err => console.error(err));
 }
 
-// Here be dragons - tread lightly!
-// Just kidding, but UGH! This function takes 3 global variables that represent nested object properties, and converts them into a single 
-// property value on which to sort the items that are returned by the map function. The property keys can be either 1, 2, or 3 levels deep:
-// item.foo, item.foo.bar, or item.foo.bar.baz
-// Dot notation doesn't support variables, so I came up with this ugly thing.
+// This function takes 3 global variables that represent nested object properties, and converts them into a single 
+// property value on which to sort the items that are returned by the map function. The property keys can be
+// either 1, 2, or 3 levels deep. (I.E: item.foo, item.foo.bar, or item.foo.bar.baz)
+// I came up with this inelegant solution for handling these arguments.
 //
-// TO DO: Figure out a regex or some other (ANY other) solution to handle this...
+// TO DO: Figure out a regex or some other scalable solution for passing these values...
 const sortJSON = () => {
     return function(a, b) {
         let textA = !prop3

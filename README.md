@@ -23,12 +23,3 @@ The API is hosted on a limited Heroku account and may periodically fail or take 
 Use any library or framework of your choosing. We will dedicate some time during your on-site interviews to discuss your implementation choices, so be mindful of tradeoffs and alternatives.
 
 You are encouraged, but not required, to make adjustments to the design, but be prepared to justify your decisions to a designer.
-
-
-How to Submit 
-
-When you are finished, send an email to your recruiter with: 
-1. URL to your source code. 
-2. URL to your running web app.
-
-You can use an online code editor (such as https://codesandbox.io) or you may submit a code repository on GitHub. If you choose to use GitHub, please make the code repository private and invite the GitHub account convoy-interview as a collaborator.
